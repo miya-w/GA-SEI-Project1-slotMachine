@@ -3,10 +3,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emoji Slot Machine</title>
-    <link rel="css/stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     
 </head>
 <body>
+        <header>
+            <h1>Emoji Slot Machine</h1>
+        </header>
+        <aside>
+            <h2>Win Chart</h2>
+            <div>
+                <img src="imgs/emoji_money-mouth_face.png" alt=""width="50px">
+                <img src="imgs/emoji_money-mouth_face.png" alt=""width="50px">
+                <img src="imgs/emoji_money-mouth_face.png" alt=""width="50px">
+                300
+            </div>
+            <div>
+                <img src="imgs/emoji_smiling face with heart-shaped eyes.png" alt="" width="50px">
+                <img src="imgs/emoji_smiling face with heart-shaped eyes.png" alt="" width="50px">
+                <img src="imgs/emoji_smiling face with heart-shaped eyes.png" alt="" width="50px">
+                200
+            </div>
+            <div>
+                <img src="imgs/emoji_smiling face with sunglasses.png" alt="" width="50px">
+                <img src="imgs/emoji_smiling face with sunglasses.png" alt="" width="50px">
+                <img src="imgs/emoji_smiling face with sunglasses.png" alt="" width="50px">
+                100
+            </div>
+            <div>-300</div>
+            <div>-200</div>
+            <div>-100</div>
+            </aside>
+        <main>
+            
+            <div class="slotMachine">
+               
+                <div class="slotMachine-container">
+               
+                   <div>0_0<img id="0_0" alt=""></div>
+                   <div>1_0<img id="1_0" alt=""></div>
+                   <div>2_0<img id="2_0" alt=""></div>
+                 
+                    <div>0_1<img id="0_1" alt=""></div>
+                   <div>1_1<img id="1_1" alt=""></div>
+                   <div>2_1<img id="2_1" alt=""></div>
+              
+                    <div>0_2<img id="0_2" alt=""></div>
+                   <div>1_2<img id="1_2" alt=""></div>
+                   <div>2_2<img id="2_2" alt=""></div>
+            
+                </div>
+            </div>
+            <div class="control">
+                <div>
+                <div>
+                    <h3>Last Win</h3>
+                    <h3 id="latWin"></h3>
+                </div>
+               <div>
+                <h3>Token</h3>
+                <h3 id="token"></h3>
+               </div>
+               
+                <input id="bid" type="number" value="1">
+                <button>SPIN</button>
+            </div>
+                
+            </div>
+        </main>
+        <footer>FOOTER</footer>
+      </body>
     
 
     <script src="js/script.js"></script>
