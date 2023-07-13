@@ -1,7 +1,7 @@
 // Emoji Slot machine
-// 1. render the emoji randomly, 3 from 9 each column.
+// 1.render the emoji randomly, 3 from 9 each column.
 // 2.winner-if three emojis in a row means hit the jack-pot
-// 3.  Wagering system : calculate the token, bet, lat win
+// 3.Wagering system : calculate the token, bet, lat win
 
 /*----- constants -----*/
 const AUDIO = new Audio();
@@ -80,7 +80,6 @@ function changeBid(){
 function spinEmojiCol0(){
     // Object.keys() returns keys(index) of an object in array
   let keys = Object.keys(emojis);
-  
   // Shuffle the keys array to randomize the order
   keys.sort(() => 0.5 - Math.random());
   // Select the first 3 keys from the shuffled array
@@ -91,8 +90,6 @@ function spinEmojiCol0(){
 //     randomEmojis[key] = emojis[key];
 randomEmojis.push(emojis[key])
 });
-
-
 Emoji0_0.src = randomEmojis[0];
 Emoji0_1.src = randomEmojis[1];
 Emoji0_2.src = randomEmojis[2];
@@ -136,22 +133,21 @@ function spinEmojiCol2(){
   Emoji2_1.src = randomEmojis[1];
   Emoji2_2.src = randomEmojis[2];
   });
-
 }
+
 
 
 function spinEmoji(){
   if(initialToken > 0){
   initialToken -= newBid; 
   token.innerHTML = initialToken
-  console.log(initialToken)
+  console.log(`Now, you have token $${initialToken}`)
   spinEmojiCol0()
   spinEmojiCol1()
   spinEmojiCol2()
   CheckJackpot()}else{
     console.log("Insufficient balance. Please add more funds.")
   }
-
 }
 
 function CheckJackpot(){
@@ -161,19 +157,19 @@ function CheckJackpot(){
 
   if (emoji0_1Src === emoji1_1Src && emoji1_1Src === emoji2_1Src ) {
     //The emojis are the same
-    let winnings = initialToken + 10* newBid; 
+    let winnings = initialToken + 10 * newBid; 
   
     initialToken = winnings;  
     token.innerHTML = winnings;
-    lastWin.innerHTML = 10* newBid;
+    lastWin.innerHTML =10 *newBid;
     console.log(`last win$${10*newBid}`)
-    console.log(`Congratulations! You won $${winnings}`); 
+    console.log(`Congratulations! now you have $${winnings}`); 
     console.log("Bingo!!!!!Emojis are the same");
   }else if(emoji0_1Src === emoji1_1Src || emoji1_1Src === emoji2_1Src || emoji0_1Src === emoji2_1Src ){
-    let winnings = initialToken + 5* newBid;
-    lastWin.innerHTML = 5*newBid;
-    console.log(`last win$${5*newBid}`)
-    console.log(`Congratulations! You won $${winnings}`);  
+    let winnings = initialToken + 3*newBid;
+    lastWin.innerHTML = 3*newBid;
+    console.log(`last win$${ 3*newBid}`)
+    console.log(`Congratulations! You have $${winnings}`);  
     initialToken = winnings;  
     token.innerHTML = winnings;
     console.log("WooHoo!!!!! Two Emojis are the same");

@@ -3,9 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emoji Slot Machine</title>
-    <link rel="stylesheet" href="css/style.css">
- 
-    
+    <link rel="stylesheet" href="css/style.css">    
 </head>
 <body>
         <main>
@@ -36,19 +34,19 @@
                 <div class="control">
                     <div>
                     <div>
-                    <img src="/imgs/bg/LAST WIN.png" alt="">
+                    <img src="imgs/bg/LAST WIN.png" alt="">
                     <h3 id="latWin"></h3>
                     </div>
                    <div>
-                    <img src="/imgs/bg/Token.png" alt="">
+                    <img src="imgs/bg/Token.png" alt="">
                     <h3 id="token"></h3>
                    </div>
                    <div class="bid">
                     <img src="/imgs/bg/Bid.png" alt="" height="25px">
-                    <input id="bid-input" type="number" min="0" value="1" onchange=changeBid()>
+                    <input id="bid-input" type="number" min="0" value="1" onchange="changeBid()" >
                    </div>
                     
-                    <img src="/imgs/button.png" alt="" id="spinBtn" onclick="spinEmoji()">
+                    <img src="imgs/button.png" alt="" id="spinBtn">
                     
                 </div>
             </div>
@@ -56,7 +54,10 @@
                 
             </div>
         </main>
-        <footer> &copy; Copyright 2023, Miah </footer> 
+        <footer>
+            <h3>Rule: JackPot: 3 emojis in a row, you win 10 * bid tokens, two emojis in a row, you win 3 * bid tokens. </h3>
+             &copy; Copyright 2023, Miah 
+            </footer> 
       </body>
     
 
