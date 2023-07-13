@@ -1,11 +1,11 @@
 // Emoji Slot machine
-// 1. render the emoji randomly 
-// 2.winner-if three emojis in a row means win
+// 1. render the emoji randomly, 3 from 9 each column.
+// 2.winner-if three emojis in a row means hit the jack-pot
 // 3.  Wagering system : calculate the token, bet, lat win
-
 
 /*----- constants -----*/
 const AUDIO = new Audio();
+//var audio = document.getElementById("AUDIO");
 const emojis = {
     1: "imgs/emoji_money-mouth_face.png",
     2: "imgs/emoji_red heart.png",
@@ -18,10 +18,10 @@ const emojis = {
     9: "imgs/emoji_2380.png"
 }
 /*----- app's state (variables) -----*/
-let lastWin = document.getElementById("latWin");
-let token = document.getElementById("token")
-let bid = document.getElementById("bid");
-
+let lastWin;
+let token;
+let bid;
+let newBid;
 
 /*----- cached element references -----*/
 const Emoji0_0 = document.getElementById('0_0');
@@ -49,23 +49,32 @@ function renderEmoji(){
   Emoji0_0.src = emojis[4];
   Emoji1_0.src = emojis[5];
   Emoji2_0.src = emojis[9];
-  //console.log( Emoji2_1.src )
 }
 
 
 
 /*----- event listeners -----*/
-document.querySelector('button').addEventListener('click', spinEmoji);
-
+document.querySelector('#spinBtn').addEventListener('click', spinEmoji);
 
 /*----- functions -----*/
 // innitialize the states
 init()
+
 function init() {
-  lastWin= "";
-  token.innerText = 100;
- 
+  lastWin = document.getElementById("latWin");
+  token = document.getElementById("token");
+  bid = document.getElementById("bid-input");
+  lastWin.innerHTML = 0;
+  newBid = 1;
+  initialToken = 100;
+  token.innerHTML = initialToken;
+  
   renderEmoji();
+}
+
+function changeBid(){
+  newBid = bid.value;
+  console.log(newBid)
 }
 
 function spinEmojiCol0(){
@@ -77,66 +86,105 @@ function spinEmojiCol0(){
   // Select the first 3 keys from the shuffled array
   keys= keys.slice(0, 3);
   // Create a new object with the selected random items
-  const randomEmojis = {};
+  const randomEmojis = [];
   keys.forEach(key => {
-    randomEmojis[key] = emojis[key];
+//     randomEmojis[key] = emojis[key];
+randomEmojis.push(emojis[key])
 });
 
-Emoji0_0.src = randomEmojis[1];
-Emoji0_1.src = randomEmojis[2];
-Emoji0_2.src = randomEmojis[3];
 
-console.log(randomEmojis);
+Emoji0_0.src = randomEmojis[0];
+Emoji0_1.src = randomEmojis[1];
+Emoji0_2.src = randomEmojis[2];
 }
+
 function spinEmojiCol1(){
-    // Get all the keys from the emojis object
-  let keys = Object.keys(emojis);
-  // Shuffle the keys array to randomize the order
-  //const shuffledKeys = keys.sort(() => 0.5 - Math.random());
-  // Select the first 3 keys from the shuffled array
-  keys.sort(() => 0.5 - Math.random());
-  keys= keys.slice(0, 3);
-  // Create a new object with the selected random items
-  const randomEmojis = {};
-  keys.forEach(key => {
-    randomEmojis[key] = emojis[key];
-  })
-  console.log(randomEmojis)
+  // Object.keys() returns keys(index) of an object in array
+let keys = Object.keys(emojis);
 
-  Emoji1_0.src = randomEmojis[1];
-  Emoji1_1.src = randomEmojis[2];
-  Emoji1_2.src = randomEmojis[3];
+// Shuffle the keys array to randomize the order
+keys.sort(() => 0.5 - Math.random());
+// Select the first 3 keys from the shuffled array
+keys= keys.slice(0, 3);
+// Create a new object with the selected random items
+const randomEmojis = [];
+keys.forEach(key => {
+//     randomEmojis[key] = emojis[key];
+randomEmojis.push(emojis[key])
 
-// console.log(randomEmojis);
+
+Emoji1_0.src = randomEmojis[0];
+Emoji1_1.src = randomEmojis[1];
+Emoji1_2.src = randomEmojis[2];
+});
+
 }
 
 function spinEmojiCol2(){
-    // Get all the keys from the emojis object
+  // Object.keys() returns keys(index) of an object in array
   let keys = Object.keys(emojis);
+
   // Shuffle the keys array to randomize the order
   keys.sort(() => 0.5 - Math.random());
   // Select the first 3 keys from the shuffled array
-  keys = keys.slice(0, 3);
+  keys= keys.slice(0, 3);
   // Create a new object with the selected random items
-  const randomEmojis = {};
+  const randomEmojis = [];
   keys.forEach(key => {
-    randomEmojis[key] = emojis[key];
-});
+  randomEmojis.push(emojis[key])
+  Emoji2_0.src = randomEmojis[0];
+  Emoji2_1.src = randomEmojis[1];
+  Emoji2_2.src = randomEmojis[2];
+  });
 
-Emoji2_0.src = randomEmojis[1];
-Emoji2_1.src = randomEmojis[2];
-Emoji2_2.src = randomEmojis[3];
-
-console.log(randomEmojis);
 }
 
 
 function spinEmoji(){
+  if(initialToken > 0){
+  initialToken -= newBid; 
+  token.innerHTML = initialToken
+  console.log(initialToken)
   spinEmojiCol0()
   spinEmojiCol1()
   spinEmojiCol2()
+  CheckJackpot()}else{
+    console.log("Insufficient balance. Please add more funds.")
+  }
+
 }
 
-function renderControl(){
+function CheckJackpot(){
+  const emoji0_1Src = Emoji0_1.src;
+  const emoji1_1Src = Emoji1_1.src;
+  const emoji2_1Src = Emoji2_1.src;
+
+  if (emoji0_1Src === emoji1_1Src && emoji1_1Src === emoji2_1Src ) {
+    //The emojis are the same
+    let winnings = initialToken + 10* newBid; 
+  
+    initialToken = winnings;  
+    token.innerHTML = winnings;
+    lastWin.innerHTML = 10* newBid;
+    console.log(`last win$${10*newBid}`)
+    console.log(`Congratulations! You won $${winnings}`); 
+    console.log("Bingo!!!!!Emojis are the same");
+  }else if(emoji0_1Src === emoji1_1Src || emoji1_1Src === emoji2_1Src || emoji0_1Src === emoji2_1Src ){
+    let winnings = initialToken + 5* newBid;
+    lastWin.innerHTML = 5*newBid;
+    console.log(`last win$${5*newBid}`)
+    console.log(`Congratulations! You won $${winnings}`);  
+    initialToken = winnings;  
+    token.innerHTML = winnings;
+    console.log("WooHoo!!!!! Two Emojis are the same");
+  }
+   else {
+    // The emojis are different
+    console.log("Emojis are different");
+  }
 
 }
+
+
+
+
