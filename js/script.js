@@ -4,7 +4,7 @@
 // 3.Wagering system : calculate the token, bet, lat win
 
 /*----- constants -----*/
-const AUDIO = new Audio();
+
 //var audio = document.getElementById("AUDIO");
 const emojis = {
     1: "imgs/emoji_money-mouth_face.png",
@@ -162,17 +162,13 @@ function CheckJackpot(){
     initialToken = winnings;  
     token.innerHTML = winnings;
     lastWin.innerHTML =10 *newBid;
-    console.log(`last win$${10*newBid}`)
-    console.log(`Congratulations! now you have $${winnings}`); 
-    console.log("Bingo!!!!!Emojis are the same");
+
   }else if(emoji0_1Src === emoji1_1Src || emoji1_1Src === emoji2_1Src || emoji0_1Src === emoji2_1Src ){
     let winnings = initialToken + 3*newBid;
     lastWin.innerHTML = 3*newBid;
-    console.log(`last win$${ 3*newBid}`)
-    console.log(`Congratulations! You have $${winnings}`);  
     initialToken = winnings;  
     token.innerHTML = winnings;
-    console.log("WooHoo!!!!! Two Emojis are the same");
+  
   }
    else {
     // The emojis are different
