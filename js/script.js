@@ -96,20 +96,13 @@ Emoji0_2.src = randomEmojis[2];
 }
 
 function spinEmojiCol1(){
-  // Object.keys() returns keys(index) of an object in array
-let keys = Object.keys(emojis);
 
-// Shuffle the keys array to randomize the order
+let keys = Object.keys(emojis);
 keys.sort(() => 0.5 - Math.random());
-// Select the first 3 keys from the shuffled array
 keys= keys.slice(0, 3);
-// Create a new object with the selected random items
 const randomEmojis = [];
 keys.forEach(key => {
-//     randomEmojis[key] = emojis[key];
 randomEmojis.push(emojis[key])
-
-
 Emoji1_0.src = randomEmojis[0];
 Emoji1_1.src = randomEmojis[1];
 Emoji1_2.src = randomEmojis[2];
@@ -118,14 +111,9 @@ Emoji1_2.src = randomEmojis[2];
 }
 
 function spinEmojiCol2(){
-  // Object.keys() returns keys(index) of an object in array
   let keys = Object.keys(emojis);
-
-  // Shuffle the keys array to randomize the order
   keys.sort(() => 0.5 - Math.random());
-  // Select the first 3 keys from the shuffled array
   keys= keys.slice(0, 3);
-  // Create a new object with the selected random items
   const randomEmojis = [];
   keys.forEach(key => {
   randomEmojis.push(emojis[key])
