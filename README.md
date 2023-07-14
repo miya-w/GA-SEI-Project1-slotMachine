@@ -1,10 +1,19 @@
 # 202307 GA SEI Project 1 - Emoji Slot Machine
-The project is for General Assembly's Software Engineering Immersive, a JavaScript browser-based game developed in a week.
+This project is for General Assembly's Software Engineering Immersive, a JavaScript browser-based game developed in a week.
 
 ![slot-machine](https://github.com/miya-w/GA-SEI-Project1-slotMachine/blob/main/imgs/emojiSlotMachine.png)
 
 ## Deployment
 Deployed this game on GitHub Pages [-> Emoji Slot Machine ](https://miya-w.github.io/GA-SEI-Project1-slotMachine/)
+
+## Technologies Used
+
+- HTML5
+- CSS3 
+- JavaScript (ES6)
+- GitHub Pages
+- Google Fonts
+
 
 ## User Stories & Rules
 - Select the Number of Bids: Before starting the game, the player must choose the number of bids they want to place. This determines the amount of money or credits they are willing to wager.
@@ -21,13 +30,6 @@ b. Two Same Emojis in a Row: In addition to the middle row win, if the player ma
 
 Repeat and Enjoy: The player can repeat the process by selecting a new bid amount and clicking the spin button. The randomness of the emoji selection on each spin keeps the game engaging and unpredictable, adding to the excitement of potential wins.
 
-## Technologies Used
-
-- HTML5
-- CSS3 
-- JavaScript (ES6)
-- GitHub Pages
-- Google Fonts
 
 ## Code process
 

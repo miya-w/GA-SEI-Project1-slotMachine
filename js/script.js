@@ -84,7 +84,7 @@ function spinEmojiCol0(){
   keys.sort(() => 0.5 - Math.random());
   // Select the first 3 keys from the shuffled array
   keys= keys.slice(0, 3);
-  // Create a new object with the selected random items
+  // Create a new array with the selected random items
   const randomEmojis = [];
   keys.forEach(key => {
 //     randomEmojis[key] = emojis[key];
